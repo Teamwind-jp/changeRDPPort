@@ -1,8 +1,13 @@
-﻿'-------------------------------------------------
-'rdpポート　引数に変更して再起動　bye
+﻿'
+'リモートデスクトップ環境保守ツール
+'本ソフトは、レジストリのrdpポート番号を引数値に変更して再起動します。使用には注意してください。
+'本ソフトの使用目的と実施手順等は、readme.mdで解説します。
+
+'(c)2025 teamwind japan n.hayashi
 
 Public Class Form1
 
+#Region "Runtimes"
 
     <System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError:=True)>
     Private Shared Function GetCurrentProcess() As IntPtr
@@ -42,6 +47,11 @@ Public Class Form1
     ByVal ReturnLength As IntPtr) As Boolean
     End Function
 
+#End Region
+
+#Region "シャットダウン処理"
+
+
     'シャットダウンするためのセキュリティ特権を有効にする
     Public Shared Sub AdjustToken()
         Const TOKEN_ADJUST_PRIVILEGES As Integer = &H20
@@ -57,8 +67,7 @@ Public Class Form1
 
         'トークンを取得する
         Dim tokenHandle As IntPtr
-        OpenProcessToken(procHandle,
-        TOKEN_ADJUST_PRIVILEGES Or TOKEN_QUERY, tokenHandle)
+        OpenProcessToken(procHandle, TOKEN_ADJUST_PRIVILEGES Or TOKEN_QUERY, tokenHandle)
         'LUIDを取得する
         Dim tp As New TOKEN_PRIVILEGES()
         tp.Attributes = SE_PRIVILEGE_ENABLED
@@ -82,25 +91,47 @@ Public Class Form1
     End Enum
 
     <System.Runtime.InteropServices.DllImport("user32.dll", SetLastError:=True)>
-    Public Shared Function ExitWindowsEx(ByVal uFlags As ExitWindows,
-    ByVal dwReason As Integer) As Boolean
+    Public Shared Function ExitWindowsEx(ByVal uFlags As ExitWindows, ByVal dwReason As Integer) As Boolean
     End Function
+
+#End Region
+
+#Region "onload"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'rdpポート変更
+        'Argument. 引数取得
+        'If there are no arguments end. 引数無しは終了
+        'If you want to set it directly, delete the code below. 直接セットする場合は、以下のコードを削除してください。
+        Dim port As Int32 = 3389
+        Dim cmds() As String
+        cmds = System.Environment.GetCommandLineArgs()
+        If cmds.Length = 2 Then
+            Try
+                port = Val(cmds(1))
+            Catch ex As Exception
+                'no arg
+                End
+            End Try
+        Else
+            End
+        End If
 
-        My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp", "PortNumber", 50514)
+        'Registry rdp port change. レジストリrdpポート変更
+        'If you do not use the argument, set it directly. 引数を使用しない場合は、直接セットしてください。
+        My.Computer.Registry.SetValue("HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp", "PortNumber", port)
 
+        'Privilege Activation 特権有効化
         AdjustToken()
+        'reboot
         ExitWindowsEx(ExitWindows.EWX_REBOOT, 0)
-
 
         End
 
 
     End Sub
 
+#End Region
 
 
 End Class
