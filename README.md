@@ -6,7 +6,6 @@
 Windowsサーバーをリモートデスクトップで保守する場合、セキュリティ対策としてファイヤーウォールのrdpポートプロパティのスコープに接続を許可するIPアドレスを指定します。
 この設定をしないと不特定多数からアタックされてしまいます。下図はファイヤーウォールのプロパティ
 
-![firewall](https://github.com/user-attachments/assets/bfb47da6-8766-4847-bbc3-eb93a09e5a45)
 
 
 # Requirement
