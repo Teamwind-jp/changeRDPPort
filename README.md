@@ -9,7 +9,7 @@ Windowsサーバーをリモートデスクトップで保守する場合の有�
 ![firewall](https://github.com/user-attachments/assets/4db719c9-4dc6-4799-a75b-8f36291d9cc1)
 
 
-![firewall](https://github.com/github/changeRDPPort/changeRDPPort1.jpg)
+![firewall](http://teamwindmainte3.ddns.net/github/changeRDPPort/changeRDPPort1.jpg)
 
 しかし、このセキュリティ対策は、接続する側のIPアドレスが変わった場合に接続できなくなる問題が発生します。
 このソフトは、その問題を解決します。
