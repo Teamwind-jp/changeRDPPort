@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2318BD3A-0108-43B9-8FB5-76AC94E04340}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>changeRDPPort.My.MyApplication</StartupObject>
+    <StartupObject>changeRDPPort.Form1</StartupObject>
     <RootNamespace>changeRDPPort</RootNamespace>
     <AssemblyName>changeRDPPort</AssemblyName>
     <FileAlignment>512</FileAlignment>

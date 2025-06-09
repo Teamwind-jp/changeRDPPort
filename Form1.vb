@@ -1,4 +1,9 @@
-﻿'
+﻿'changeRDPPort.exe
+'Remote Desktop Environment Maintenance Tools
+'This software changes the RDP port number in the registry to the argument value and restarts. Please use it with caution.
+'The purpose and implementation procedures of this software will be explained in readme.md.
+'
+
 'リモートデスクトップ環境保守ツール
 '本ソフトは、レジストリのrdpポート番号を引数値に変更して再起動します。使用には注意してください。
 '本ソフトの使用目的と実施手順等は、readme.mdで解説します。
@@ -49,7 +54,7 @@ Public Class Form1
 
 #End Region
 
-#Region "シャットダウン処理"
+#Region "Shutdown process シャットダウン処理"
 
 
     'シャットダウンするためのセキュリティ特権を有効にする
@@ -103,14 +108,14 @@ Public Class Form1
         'Argument. 引数取得
         'If there are no arguments end. 引数無しは終了
         'If you want to set it directly, delete the code below. 直接セットする場合は、以下のコードを削除してください。
-        Dim port As Int32 = 3389
+        Dim port As Int32
         Dim cmds() As String
         cmds = System.Environment.GetCommandLineArgs()
         If cmds.Length = 2 Then
             Try
                 port = Val(cmds(1))
             Catch ex As Exception
-                'no arg
+                'error arg
                 End
             End Try
         Else
@@ -123,6 +128,7 @@ Public Class Form1
 
         'Privilege Activation 特権有効化
         AdjustToken()
+
         'reboot
         ExitWindowsEx(ExitWindows.EWX_REBOOT, 0)
 
