@@ -43,10 +43,12 @@ rdpの既定ポートは、3389ですが念のためこれも変えます。以�
 2.Firewall settings. ファイヤーウォール設定
 In the firewall settings, close 3389 and add and open the two ports 50001 and 50002.
 ファイヤーウォールの設定で3389を閉じて50001と50002の2つを追加し開放します。
+
 ![changeRDPPort10](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort10.jpg)
 
 Add the IP address to connect to the default scope of 50001. The configuration for 50002 is not necessary.
 既定の50001のスコープに接続するIPアドレスを追加してください。50002の設定は不要です。
+
 ![changeRDPPort1](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort1.jpg)
 
 3.Add the static IP masquerade for the router to direct ports 50001 and 50002 to the server.
@@ -59,10 +61,12 @@ Please read the manual of your router.
 レジストリのrdpポートを50001に変更して再起動します。
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]PortNumber。
+
 ![changeRDPPort2](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort2.jpg)
 
 You will now be able to connect to the remote desktop using port 50001.
 以上で新たに50001を使用してリモートデスクトップ接続が可能になります。
+
 ![changeRDPPort3](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort3.jpg)
 
 5.Place this software in any folder. 本ソフトを任意のフォルダに配置します。
@@ -75,20 +79,25 @@ UAC確認ダイアログを出さないためにタスクスケジューラに�
 
 6.Add a task in Task Scheduler in Administrative Tools.
 管理ツールのタスクスケジューラでタスクを追加します。
+
 ![changeRDPPort4](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort4.jpg)
+
 
 ![changeRDPPort5](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort5.jpg)
 
 Set the path of this software. Use the backup port as an argument. Enter the same path in the start option.
 本ソフトのパスを設定します。予備ポートを引数にします。開始オプションに同じパスを入力します。
+
 ![changeRDPPort6](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort6.jpg)
 
 In the General tab, enter an arbitrary name and check the boxes as shown.
 全般タブで任意の名称を入力し図の通りにチェックします。
+
 ![changeRDPPort7](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort7.jpg)
 
 Enter the administrator password and click OK.
 OKボタンで管理者パスワードを入力します。
+
 ![changeRDPPort8](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort8.jpg)
 
 The task scheduler is now ready.
@@ -98,6 +107,7 @@ The task scheduler is now ready.
 本ソフトのショートカットを作成しプロパティのリンク先をタスクスケジューラに変更します。
 
 C:\Windows\system32\schtasks.exe /run /tn changerdpport
+
 ![changeRDPPort9](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort9.jpg)
 
 You can now run this software without the UAC confirmation dialog.
@@ -135,10 +145,12 @@ After restarting, the spare port that is not set in the scope will open.
 2.Connect remote desktop リモートデスクトップで接続する
 Connect via a spare port.
 予備ポートで接続します。
+
 ![changeRDPPort11](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort11.jpg)
 
 3.Scope the firewall to the new IP.
 ファイヤーウォールのスコープに新しいIPを設定します。
+
 ![changeRDPPort1](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort1.jpg)
 
 4.Change the rdp port in the registry back to 50001 and reboot.
