@@ -38,44 +38,44 @@ Please do so at your own risk.
 1. Preparation. 準備。
 
 We will decide on two numbers: the default port and the backup port.
-The default port for rdp is 3389, but we will change this just to be safe. In what follows, we will assume that the default is 50001 and the backup is 50002.
+The default port for rdp is 3389, but we will change this just to be safe. In what follows, we will assume that the default is 50001 and the backup is <font color="blue">50002</font>.
 Check the IP address of the connecting side.
 
 既定ポートと予備ポートの2つの番号を決めます。
-rdpの既定ポートは、3389ですが念のためこれも変えます。以下、既定を50001、予備を50002と仮定します。
+rdpの既定ポートは、3389ですが念のためこれも変えます。以下、既定を<font color="red">50001</font>、予備を<font color="blue">50002</font>と仮定します。
 接続する側のIPアドレスを調べてください。
 
 2.Firewall settings. ファイヤーウォール設定
 
-In the firewall settings, close 3389 and add and open the two ports 50001 and 50002.
+In the firewall settings, close 3389 and add and open the two ports <font color="red">50001</font> and 50002.
 
-ファイヤーウォールの設定で3389を閉じて50001と50002の2つを追加し開放します。
+ファイヤーウォールの設定で3389を閉じて<font color="red">50001</font>と<font color="blue">50002</font>の2つを追加し開放します。
 
 ![changeRDPPort10](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort10.jpg)
 
-Add the IP address to connect to the default scope of 50001. The configuration for 50002 is not necessary.
+Add the IP address to connect to the default scope of <font color="red">50001</font>. The configuration for <font color="blue">50002</font> is not necessary.
 
-既定の50001のスコープに接続するIPアドレスを追加してください。50002の設定は不要です。
+既定の<font color="red">50001</font>のスコープに接続するIPアドレスを追加してください。<font color="blue">50002</font>の設定は不要です。
 
 ![changeRDPPort1](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort1.jpg)
 
-3.Add the static IP masquerade for the router to direct ports 50001 and 50002 to the server.
+3.Add the static IP masquerade for the router to direct ports <font color="red">50001</font> and <font color="blue">50002</font> to the server.
 Please read the manual of your router.
 
-ルーターの静的IPマスカレードに50001と50002の2つをサーバーに向かうよう追加登録してください。
+ルーターの静的IPマスカレードに<font color="red">50001</font>と<font color="blue">50002</font>の2つをサーバーに向かうよう追加登録してください。
 設定は、お使いのルーターの説明書を読んでください。
 
-4.Change the rdp port in the registry to 50001 and reboot.
+4.Change the rdp port in the registry to <font color="red">50001</font> and reboot.
 
-レジストリのrdpポートを50001に変更して再起動します。
+レジストリのrdpポートを<font color="red">50001</font>に変更して再起動します。
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp]PortNumber。
 
 ![changeRDPPort2](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort2.jpg)
 
-You will now be able to connect to the remote desktop using port 50001.
+You will now be able to connect to the remote desktop using port <font color="red">50001</font>.
 
-以上で新たに50001を使用してリモートデスクトップ接続が可能になります。
+以上で新たに<font color="red">50001</font>を使用してリモートデスクトップ接続が可能になります。
 
 ![changeRDPPort3](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort3.jpg)
 
@@ -175,9 +175,9 @@ Connect via a spare port.
 
 ![changeRDPPort1](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort1.jpg)
 
-4.Change the rdp port in the registry back to 50001 and reboot.
+4.Change the rdp port in the registry back to <font color="red">50001</font> and reboot.
 
-レジストリのrdpポートを50001に戻して再起動します。
+レジストリのrdpポートを<font color="red">50001</font>に戻して再起動します。
 
 
 That is all. The act of remotely rebooting the server carries risks. Please implement this content after establishing sufficient testing and operational backups.
