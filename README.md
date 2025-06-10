@@ -37,7 +37,7 @@ Please do so at your own risk.
 
 1. Preparation. 準備。
 
-1. We will decide on two numbers: the default port and the backup port.
+We will decide on two numbers: the default port and the backup port.
 The default port for rdp is 3389, but we will change this just to be safe. In what follows, we will assume that the default is 50001 and the backup is 50002.
 Check the IP address of the connecting side.
 
