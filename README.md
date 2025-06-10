@@ -42,7 +42,7 @@ The default port for rdp is 3389, but we will change this just to be safe. In wh
 Check the IP address of the connecting side.
 
 既定ポートと予備ポートの2つの番号を決めます。
-rdpの既定ポートは、3389ですが念のためこれも変えます。以下、既定を:red_circle:50001、予備を50002と仮定します。
+rdpの既定ポートは、3389ですが念のためこれも変えます。以下、既定を :red_circle: 50001、予備を50002と仮定します。
 接続する側のIPアドレスを調べてください。
 
 2.Firewall settings. ファイヤーウォール設定
