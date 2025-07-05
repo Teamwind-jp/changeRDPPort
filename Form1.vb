@@ -103,8 +103,10 @@ Public Class Form1
 #Region "Another shutdown process 別のシャットダウン処理"
 
     'The following codes are different ways to restart. Please use them as appropriate.
+    'Please note that shutdown.exe works differently depending on the Windows version.
 
     '以下のコードは別の再起動方法です。適宜切り分けてください。
+    'shutdown.exeは、Windowsバージョンによって動作に違いがあります。注意してください。
 
     Private Sub otherReboot()
 
