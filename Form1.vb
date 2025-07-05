@@ -56,7 +56,6 @@ Public Class Form1
 
 #Region "Shutdown process シャットダウン処理"
 
-
     'シャットダウンするためのセキュリティ特権を有効にする
     Public Shared Sub AdjustToken()
         Const TOKEN_ADJUST_PRIVILEGES As Integer = &H20
@@ -101,6 +100,28 @@ Public Class Form1
 
 #End Region
 
+#Region "Another shutdown process 別のシャットダウン処理"
+
+    'The following codes are different ways to restart. Please use them as appropriate.
+
+    '以下のコードは別の再起動方法です。適宜切り分けてください。
+
+    Private Sub otherReboot()
+
+        Dim psi As New System.Diagnostics.ProcessStartInfo()
+        psi.FileName = "shutdown.exe"
+        psi.Arguments = "/r/f"
+        psi.UseShellExecute = False
+        psi.CreateNoWindow = True
+        '起動
+        Dim p As System.Diagnostics.Process = System.Diagnostics.Process.Start(psi)
+
+    End Sub
+
+
+#End Region
+
+
 #Region "onload"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -130,7 +151,7 @@ Public Class Form1
         AdjustToken()
 
         'reboot
-        ExitWindowsEx(ExitWindows.EWX_REBOOT, 0)
+        ExitWindowsEx(ExitWindows.EWX_REBOOT Or ExitWindows.EWX_FORCE, 0)
 
         End
 

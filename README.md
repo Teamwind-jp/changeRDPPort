@@ -81,15 +81,16 @@ You will now be able to connect to the remote desktop using port **50001**.
 
 5.Place this software in any folder. 本ソフトを任意のフォルダに配置します。
 
-When this software is started, a UAC confirmation dialog appears and stops. If you cannot access it remotely, this is the end.
+If Windows is under UAC management, a dialog will appear when you run it. If you cannot enter it remotely, that's the end of it.
 Configure the task scheduler to run this software in order to avoid displaying the UAC confirmation dialog.
 
-そのまま本ソフトを起動するとUAC確認ダイアログが出て止まります。遠隔で中に入れない場合は、これでジエンドです。
+WindowsがUAC管理下では、実行時にダイアログが出ます。遠隔で中に入れない場合は、これでジエンドです。
 UAC確認ダイアログを出さないためにタスクスケジューラに本ソフトを実行させる設定をします。
 
 6.Add a task in Task Scheduler in Administrative Tools.
+If you are in an environment where the UAC confirmation dialog does not appear, this setting is not necessary. Please run the EXE directly from php.
 
-管理ツールのタスクスケジューラでタスクを追加します。
+管理ツールのタスクスケジューラでタスクを追加します。UAC確認ダイアログが出ない環境ならばこの設定は必要ありません。直接phpからEXEを実行してください。
 
 ![changeRDPPort4](http://teamwind.serveblog.net/github/changeRDPPort/changeRDPPort4.jpg)
 
